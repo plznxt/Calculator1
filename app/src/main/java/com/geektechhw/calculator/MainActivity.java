@@ -14,7 +14,7 @@ import android.widget.TextView;
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
-    private Integer first, second, num1, num2, num3, num4;
+    private Integer first, second;
     private boolean isOperationClick;
 
 
