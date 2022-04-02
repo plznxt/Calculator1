@@ -6,16 +6,20 @@ import static com.geektechhw.calculator.R.id.three;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
-    private Integer first, second;
+    private Double first, second;
     private boolean isOperationClick;
+    private String operation;
+    private Button next;
 
 
     @Override
@@ -23,6 +27,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById (R.id.textView);
+        next = findViewById(R.id.next);
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                String result = textView.getText().toString();
+                intent.putExtra("result", result);
+                startActivity(intent);
+            }
+        });
     }
 
     public void onNumberClick(View view) {
@@ -59,10 +73,14 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.clear_text:
                 textView.setText("0");
-                first = 0;
-                second = 0;
+                first = 0.0;
+                second = 0.0;
+            break;
+            case R.id.tochka:
+            setNumber(".");
             break;
         }
+        next.setVisibility(View.INVISIBLE);
     }
 
     private void setNumber(String number){
@@ -74,19 +92,68 @@ public class MainActivity extends AppCompatActivity {
         isOperationClick = false;
     }
 
-    @SuppressLint("NonConstantResourceId")
     public void onOperationClick(View view) {
+        next.setVisibility(View.INVISIBLE);
         switch (view.getId()){
+            case R.id.percent:
+                setFirst();
+                isOperationClick = true;
+                operation = "%";
+                break;
             case R.id.plus:
-                first = Integer.parseInt(textView.getText().toString());
-                isOperationClick= true;
+                setFirst();
+                isOperationClick = true;
+                operation = "+";
+                break;
+            case R.id.minus:
+                setFirst();
+                isOperationClick = true;
+                operation = "-";
+                break;
+            case R.id.multiplication:
+                setFirst();
+                isOperationClick = true;
+                operation = "X";
+                break;
+            case R.id.division:
+                setFirst();
+                isOperationClick = true;
+                operation = "/";
                 break;
             case R.id.equal:
-                second = Integer.parseInt(textView.getText().toString());
-                Integer result = first + second;
-                textView.setText(result.toString());
-                isOperationClick= true;
+                setSecond();
+                Double result = 0.0;
+                next.setVisibility(View.VISIBLE);
+                switch (operation){
+                    case "%":
+                        result = (first / 100.0f);
+                        textView.setText(result.toString());
+                        break;
+                    case "+":
+                        result = first + second;
+                        textView.setText(result.toString());
+                        break;
+                    case "-":
+                        result = first - second;
+                        textView.setText(result.toString());
+                        break;
+                    case "X":
+                        result = first * second;
+                        textView.setText(result.toString());
+                        break;
+                    case "/":
+                        result = first / second;
+                        textView.setText(result.toString());
+                        break;
+                }
                 break;
         }
+    }
+
+    public void setFirst () {
+        first = Double.parseDouble(textView.getText().toString());
+    }
+    public void setSecond () {
+        second = Double.parseDouble(textView.getText().toString());
     }
 }

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondActivity"
+    android:background="@color/purple">
+
+    <TextView
+        android:id="@+id/policies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Policies"
+        android:textSize="34sp"
+        android:textColor="@color/dark_gray"
+        android:layout_marginTop="60dp"/>
+
+    <EditText
+        android:drawableEnd="@drawable/ic_baseline_arrow_right_24"
+        android:background="@drawable/bg"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:id="@+id/policy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/policies"
+        android:hint="Policy"
+        android:textColorHint="@color/dark_gray"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="15dp"/>
+
+    <EditText
+        android:drawableEnd="@drawable/ic_baseline_arrow_right_24"
+        android:background="@drawable/bg"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:id="@+id/product_category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/policy"
+        android:hint="Product Category"
+        android:textColorHint="@color/dark_gray"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="15dp"/>
+
+    <EditText
+        android:drawableEnd="@drawable/ic_baseline_arrow_right_24"
+        android:background="@drawable/bg"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:id="@+id/origin_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/product_category"
+        android:hint="Origin Country"
+        android:textColorHint="@color/dark_gray"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="15dp"/>
+
+    <EditText
+        android:drawableEnd="@drawable/ic_baseline_arrow_right_24"
+        android:background="@drawable/bg"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingStart="15dp"
+        android:id="@+id/brand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/origin_country"
+        android:hint="Brand"
+        android:textColorHint="@color/dark_gray"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="15dp"/>
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Current Policies"
+        android:textColor="@color/black"
+        android:textSize="34dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/brand"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/clear_text"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:text="Export as CSV"
+        android:textSize="15sp"
+        app:cornerRadius="15dp"
+        app:layout_constraintTop_toBottomOf="@id/text_view"
+        android:layout_marginHorizontal="65dp"
+        android:backgroundTint="@color/red"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
