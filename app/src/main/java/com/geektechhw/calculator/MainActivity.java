@@ -1,16 +1,14 @@
 package com.geektechhw.calculator;
 
-import static com.geektechhw.calculator.R.id.textView;
-import static com.geektechhw.calculator.R.id.three;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.calculater.R;
 
 
 public class MainActivity extends AppCompatActivity {
